@@ -5,9 +5,6 @@ import '../screens/product_detail_screen.dart';
 import '../providers/product.dart';
 
 class ProductItem extends StatelessWidget {
-  // final Product product;
-
-  // ProductItem(this.product);
   @override
   Widget build(BuildContext context) {
     final product = Provider.of<Product>(context);
