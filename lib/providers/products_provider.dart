@@ -40,15 +40,12 @@ class ProductsProvider with ChangeNotifier {
   var _showFavoritesOnly = false;
 
   List<Product> get items {
-    if (_showFavoritesOnly) {
-      return _items.where((product) => product.isFavorite).toList();
-    }
     // 参照ではなくコピーを返す
     return [..._items];
   }
 
   List<Product> get favoriteItems {
-    return _items..where((prodItem) => prodItem.isFavorite).toList();
+    return _items.where((product) => product.isFavorite).toList();
   }
 
   Product findById(String id) {
