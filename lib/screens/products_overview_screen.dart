@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../widgets/products_grid.dart';
 import '../widgets/badge.dart';
+import '../providers/cart.dart';
 
 enum FilterOptions {
   Favorites,
@@ -44,8 +46,15 @@ class _ProductOverviewScreenState extends State<ProductsOverviewScreen> {
               )
             ],
           ),
-          Badge(
-            child: IconButton(icon: Icon(Icons.shopping_cart)),
+          Consumer<Cart>(
+            builder: (_, _cart, _chiid) => Badge(
+              child: _chiid,
+              value: _cart.itemCount.toString(),
+            ),
+            child: IconButton(
+              icon: Icon(Icons.shopping_cart),
+              onPressed: () {},
+            ),
           )
         ],
       ),
