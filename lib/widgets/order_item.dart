@@ -39,7 +39,7 @@ class _OrderItemState extends State<OrderItem> {
           if (_expanded)
             Container(
               height: min(widget.order.products.length * 20.0 + 100, 180),
-          
+            ),
         ],
       ),
     );
