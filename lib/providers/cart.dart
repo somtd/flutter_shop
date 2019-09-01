@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 
+// CartItem
 class CartItem {
   final String id;
   final String productId;
