@@ -24,7 +24,7 @@ class _OrderItemState extends State<OrderItem> {
       child: Column(
         children: <Widget>[
           ListTile(
-            title: Text('\$${widget.order.amount}'),
+            title: Text('\$${widget.order.amount.toStringAsFixed(2)}'),
             subtitle: Text(
                 DateFormat('yyyy MM dd hh:mm').format(widget.order.dateTime)),
             trailing: IconButton(
@@ -38,26 +38,29 @@ class _OrderItemState extends State<OrderItem> {
           ),
           if (_expanded)
             Container(
-              height: min(widget.order.products.length * 20.0 + 100, 180),
+              padding: EdgeInsets.symmetric(horizontal: 15, vertical: 4),
+              height: min(widget.order.products.length * 20.0 + 10, 180),
               child: ListView(
-                children: widget.order.products.map(f)
-                  (_product) => Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      Text(
-                        _product.title,
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                        ),
+                children: widget.order.products
+                    .map(
+                      (_product) => Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          Text(
+                            _product.title,
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Text(
+                            '${_product.quantity}x \$${_product.price}',
+                            style: TextStyle(fontSize: 18),
+                          )
+                        ],
                       ),
-                      Text(
-                        '${_product.quantity}x \$${_product.price}',
-                        style: TextStyle(fontSize: 18),
-                      )
-                    ],
-                  ),
-                ),
+                    )
+                    .toList(),
               ),
             ),
         ],
