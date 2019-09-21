@@ -67,7 +67,7 @@ class ProductsProvider with ChangeNotifier {
   //   notifyListeners();
   // }
 
-  void addProduct(Product product) {
+  Future<void> addProduct(Product product) {
     const url = 'https://flutter-update-20f10.firebaseio.com/products.json';
     http
         .post(
@@ -92,6 +92,7 @@ class ProductsProvider with ChangeNotifier {
       _items.add(newProduct);
       // _items.insert(0, newProduct); // at the start of the list
       notifyListeners();
+      return Future.value();
     });
   }
 
